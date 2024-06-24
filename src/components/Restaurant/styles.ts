@@ -6,6 +6,7 @@ export const Card = styled.div`
   position: relative;
   background-color: ${colors.branco};
   margin-bottom: 48px;
+  border: 1px solid ${colors.orange};
 
   > img {
     width: 100%;
@@ -33,4 +34,9 @@ export const HeaderCard = styled.div`
   span {
     margin-right: 8px;
   }
+`
+export const Infos = styled.div`
+  position: absolute;
+  top: 16px;
+  right: 16px;
 `

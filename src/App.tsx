@@ -4,12 +4,12 @@ import { GlobalCss } from './styles'
 
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Restaurants from './components/Restaurants'
+import RestaurantList from './components/RestaurantList'
 
 const rotas = createBrowserRouter([
   {
     path: '/',
-    element: <Restaurants />
+    element: <RestaurantList />
   }
 ])
 function App() {
