@@ -23,11 +23,13 @@ export const ButtonGeral = styled(Link)`
 
 export const ButtonModal = styled.button`
   font-size: 14px;
+  font-weight: 700;
   padding: 4px 6px;
   transition: 1s;
   color: ${colors.orange};
   background-color: ${colors.bege};
   border: 1px solid ${colors.bege};
+  width: 100%;
 
   &:hover {
     filter: brightness(120%);

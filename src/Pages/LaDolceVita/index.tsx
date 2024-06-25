@@ -1,77 +1,59 @@
 import Header2 from '../../components/Header2'
-import RestaurantList from '../../components/RestaurantList'
-import RestaurantModel from '../../models/Restaurant'
+import PlatesList from '../../components/PlatesList'
 
-import restaurant1 from '../../assets/image/restaurant1.svg'
-import restaurant2 from '../../assets/image/restaurant2.svg'
+import PlateModel from '../../models/Plates'
 
-const lista: RestaurantModel[] = [
+import plate1 from '../../assets/image/plate1.svg'
+
+const lista: PlateModel[] = [
   {
     id: 1,
-    image: restaurant1,
-    title: 'Hioki Sushi',
-    avaliation: '4.7',
+    image: plate1,
+    title: 'Pizza Marguerita',
     description:
-      'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!',
-    infos: ['Destaque da semana', 'Japonesa'],
-    to: '/hioki-sushi'
+      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
   },
   {
     id: 2,
-    image: restaurant2,
-    title: 'La Dolce Vita Trattoria',
-    avaliation: '4.9',
+    image: plate1,
+    title: 'Pizza Marguerita',
     description:
-      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    infos: ['Italiana'],
-    to: '/la-dolce-vita-trattoria'
+      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
   },
   {
     id: 3,
-    image: restaurant1,
-    title: 'Hioki Sushi',
-    avaliation: '4.7',
+    image: plate1,
+    title: 'Pizza Marguerita',
     description:
-      'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!',
-    infos: ['Destaque da semana', 'Japonesa'],
-    to: '/hioki-sushi'
+      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
   },
   {
     id: 4,
-    image: restaurant2,
-    title: 'La Dolce Vita Trattoria',
-    avaliation: '4.9',
+    image: plate1,
+    title: 'Pizza Marguerita',
     description:
-      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    infos: ['Italiana'],
-    to: '/la-dolce-vita-trattoria'
+      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
   },
   {
     id: 5,
-    image: restaurant1,
-    title: 'Hioki Sushi',
-    avaliation: '4.7',
+    image: plate1,
+    title: 'Pizza Marguerita',
     description:
-      'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!',
-    infos: ['Destaque da semana', 'Japonesa'],
-    to: '/hioki-sushi'
+      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
   },
   {
     id: 6,
-    image: restaurant2,
-    title: 'La Dolce Vita Trattoria',
-    avaliation: '4.9',
+    image: plate1,
+    title: 'Pizza Marguerita',
     description:
-      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    infos: ['Italiana'],
-    to: '/la-dolce-vita-trattoria'
+      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
   }
 ]
 
 const LaDolceVita = () => (
   <>
     <Header2 />
-    <RestaurantList restaurants={lista} />
+    <PlatesList plates={lista} />
   </>
 )
 

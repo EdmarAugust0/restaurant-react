@@ -7,7 +7,7 @@ import header2 from '../../assets/image/header2.svg'
 
 const Header2 = () => (
   <ImgFundo2 style={{ backgroundImage: `url(${header2})` }}>
-    <Header2Style>
+    <Header2Style className="container">
       <Link to="/">Restaurantes</Link>
       <img src={LogoHeader} alt="logo" />
       <p>0 produto(s) no carrinho</p>

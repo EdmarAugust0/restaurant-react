@@ -8,7 +8,7 @@ export const ImgFundo2 = styled.div`
 export const Header2Style = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   height: 100%;
 `
