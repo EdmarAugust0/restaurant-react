@@ -14,10 +14,9 @@ export const GlobalCss = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: Roboto, sans-serif;
-  }
-
-  body {
+    text-decoration: none;
     color: ${colors.orange};
+    list-style: none;
   }
 
   .container {

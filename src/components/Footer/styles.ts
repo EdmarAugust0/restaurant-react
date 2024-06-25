@@ -20,7 +20,6 @@ export const Links = styled.ul`
   display: flex;
   justify-content: center;
   gap: 16px;
-  list-style: none;
   margin-bottom: 80px;
 `
 

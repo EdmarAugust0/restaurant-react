@@ -16,5 +16,4 @@ export const TitleHeader = styled.h1`
 export const ImgFundo = styled.div`
   width: 100%;
   height: 384px;
-  display: block;
 `

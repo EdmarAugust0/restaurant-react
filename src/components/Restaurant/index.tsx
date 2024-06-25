@@ -1,9 +1,9 @@
 import { Card, Description, HeaderCard, Infos, Title } from './styles'
 
 import Button from '../Button'
+import Tag from '../Tag'
 
 import estrela from '../../assets/image/estrela.svg'
-import Tag from '../Tag'
 
 export type Props = {
   image: string
@@ -11,6 +11,7 @@ export type Props = {
   avaliation: string
   description: string
   infos: string[]
+  to: string
 }
 
 const Restaurant = ({
@@ -18,6 +19,7 @@ const Restaurant = ({
   description,
   image,
   infos,
+  to,
   title
 }: Props) => (
   <Card>
@@ -36,7 +38,7 @@ const Restaurant = ({
     </HeaderCard>
     <Description>{description}</Description>
     <div>
-      <Button type="link" to="/plates" title="Veja o menu">
+      <Button type="link" to={to} title="Veja o menu">
         Saiba mais
       </Button>
     </div>
