@@ -9,7 +9,10 @@ export const Card = styled.div`
   border: 1px solid ${colors.orange};
 
   > img {
+    display: block;
     width: 100%;
+    height: 217px;
+    object-fit: cover;
   }
 `
 export const Title = styled.h6`
