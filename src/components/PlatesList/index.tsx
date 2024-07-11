@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { RestaurantModel } from '../../Pages/Home'
-import banner1 from '../../assets/image/banner1.svg'
 
 import Plate from '../Plate'
 import {
@@ -12,10 +11,7 @@ import {
   TypeFood
 } from './styles'
 import { useParams } from 'react-router-dom'
-
-type Props = {
-  plates: RestaurantModel[]
-}
+import Modal from '../Modal'
 
 const PlatesList = () => {
   const [plate, setPlate] = useState<RestaurantModel>()
@@ -25,7 +21,6 @@ const PlatesList = () => {
     fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
       .then((res) => res.json())
       .then((res) => setPlate(res))
-      .catch((error) => console.log(error))
   }, [])
 
   return (
@@ -48,6 +43,13 @@ const PlatesList = () => {
           ))}
         </List>
       </div>
+      <Modal
+        preco={65.99}
+        description={plate?.descricao}
+        image={plate?.capa}
+        title={plate?.titulo}
+        porcao="Serve: de 2 a 3 pessoas"
+      />
     </Container>
   )
 }
