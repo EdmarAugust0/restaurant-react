@@ -17,7 +17,7 @@ const RestaurantList = ({ restaurants }: Props) => {
               key={restaurant.id}
               image={restaurant.capa}
               tipo={restaurant.tipo}
-              title={restaurant.title}
+              title={restaurant.titulo}
               avaliation={restaurant.avaliacao}
               description={restaurant.descricao}
               to={`/cardapio/${restaurant.id}`}

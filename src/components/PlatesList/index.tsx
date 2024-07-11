@@ -11,36 +11,39 @@ import {
   Title,
   TypeFood
 } from './styles'
+import { useParams } from 'react-router-dom'
 
 type Props = {
   plates: RestaurantModel[]
 }
 
-const PlatesList = ({ plates }: Props) => {
+const PlatesList = () => {
   const [plate, setPlate] = useState<RestaurantModel>()
+  const { id } = useParams()
 
   useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes/ID')
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
       .then((res) => res.json())
       .then((res) => setPlate(res))
+      .catch((error) => console.log(error))
   }, [])
 
   return (
     <Container>
-      <BannerFundo style={{ backgroundImage: `url(${banner1})` }}>
+      <BannerFundo style={{ backgroundImage: `url(${plate?.capa})` }}>
         <InfosRestaurant className="container">
           <TypeFood>{plate?.tipo}</TypeFood>
-          <Title>{plate?.title}</Title>
+          <Title>{plate?.titulo}</Title>
         </InfosRestaurant>
       </BannerFundo>
       <div className="container">
         <List>
-          {plates.map((plate) => (
+          {plate?.cardapio.map((p) => (
             <Plate
-              key={plate.id}
-              image={plate.cardapio.foto}
-              title={plate.cardapio.nome}
-              description={plate.cardapio.descricao}
+              key={p.id}
+              image={p.foto}
+              title={p.nome}
+              description={p.descricao}
             />
           ))}
         </List>

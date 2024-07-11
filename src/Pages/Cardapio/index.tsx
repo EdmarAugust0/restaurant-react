@@ -14,7 +14,7 @@ const Cardapio = () => {
   return (
     <>
       <Header2 />
-      <PlatesList plates={listaCardapio} />
+      <PlatesList />
     </>
   )
 }
