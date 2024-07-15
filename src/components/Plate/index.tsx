@@ -16,8 +16,8 @@ export type Props = {
 const Plate = ({ image, description, title, cardapio }: Props) => {
   const [modalAberto, setModalAberto] = useState(false)
   const getDescription = (descricao: string) => {
-    if (descricao.length > 190) {
-      return descricao.slice(0, 187) + '...'
+    if (descricao.length > 193) {
+      return descricao.slice(0, 190) + '...'
     }
     return descricao
   }

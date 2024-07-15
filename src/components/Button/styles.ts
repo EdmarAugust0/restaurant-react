@@ -30,6 +30,7 @@ export const ButtonModal = styled.button`
   background-color: ${colors.bege};
   border: 1px solid ${colors.bege};
   width: 100%;
+  cursor: pointer;
 
   &:hover {
     filter: brightness(120%);

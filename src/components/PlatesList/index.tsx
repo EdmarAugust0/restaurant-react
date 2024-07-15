@@ -10,7 +10,6 @@ import {
   Title,
   TypeFood
 } from './styles'
-import Modal from '../Modal'
 
 export type Props = {
   restaurant?: RestaurantModel
