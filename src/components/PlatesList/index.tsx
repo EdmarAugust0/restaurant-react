@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { RestaurantModel } from '../../Pages/Home'
 
 import Plate from '../Plate'
@@ -10,46 +10,43 @@ import {
   Title,
   TypeFood
 } from './styles'
-import { useParams } from 'react-router-dom'
 import Modal from '../Modal'
 
-const PlatesList = () => {
-  const [plate, setPlate] = useState<RestaurantModel>()
-  const { id } = useParams()
+export type Props = {
+  restaurant?: RestaurantModel
+}
 
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => setPlate(res))
-  }, [])
-
+const PlatesList = ({ restaurant }: Props) => {
+  useEffect(() => console.log(restaurant), [])
   return (
     <Container>
-      <BannerFundo style={{ backgroundImage: `url(${plate?.capa})` }}>
+      <BannerFundo style={{ backgroundImage: `url(${restaurant?.capa})` }}>
         <InfosRestaurant className="container">
-          <TypeFood>{plate?.tipo}</TypeFood>
-          <Title>{plate?.titulo}</Title>
+          <TypeFood>{restaurant?.tipo}</TypeFood>
+          <Title>{restaurant?.titulo}</Title>
         </InfosRestaurant>
       </BannerFundo>
       <div className="container">
         <List>
-          {plate?.cardapio.map((p) => (
-            <Plate
-              key={p.id}
-              image={p.foto}
-              title={p.nome}
-              description={p.descricao}
-            />
+          {restaurant?.cardapio.map((r) => (
+            <>
+              <Plate
+                key={r.id}
+                image={r.foto}
+                title={r.nome}
+                description={r.descricao}
+              />
+              <Modal
+                preco={r.preco}
+                description={r.descricao}
+                image={r.foto}
+                title={r.nome}
+                porcao={r.porcao}
+              />
+            </>
           ))}
         </List>
       </div>
-      <Modal
-        preco={65.99}
-        description={plate?.descricao}
-        image={plate?.capa}
-        title={plate?.titulo}
-        porcao="Serve: de 2 a 3 pessoas"
-      />
     </Container>
   )
 }

@@ -3,15 +3,6 @@ import { useEffect, useState } from 'react'
 import Header1 from '../../components/Header1'
 import RestaurantList from '../../components/RestaurantList'
 
-interface Cardapio {
-  foto: string
-  preco: number
-  id: number
-  nome: string
-  descricao: string
-  porcao: string
-}
-
 export type RestaurantModel = {
   id: number
   titulo: string
@@ -21,6 +12,15 @@ export type RestaurantModel = {
   descricao: string
   capa: string
   cardapio: Cardapio[]
+}
+
+export interface Cardapio {
+  foto: string
+  preco: number
+  id: number
+  nome: string
+  descricao: string
+  porcao: string
 }
 
 const Home = () => {

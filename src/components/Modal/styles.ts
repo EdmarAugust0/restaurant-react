@@ -1,19 +1,31 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
 
-export const ModalContent = styled.div`
+export const ModalUniversal = styled.div`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
 
-  img {
-    height: 280px;
-    width: 280px;
-    margin-right: 24px;
-    object-fit: cover;
+  &.visible {
+    display: flex;
   }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+`
+export const ModalContent = styled.div`
+  position: relative;
 
   > div {
     padding: 32px;
@@ -45,4 +57,18 @@ export const DescriptionModal = styled.p`
   color: ${colors.begeClaro};
   font-size: 14px;
   margin-bottom: 16px;
+`
+
+export const Close = styled.img`
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 8px;
+`
+
+export const Img = styled.img`
+  height: 280px;
+  width: 280px;
+  margin-right: 24px;
+  object-fit: cover;
 `
