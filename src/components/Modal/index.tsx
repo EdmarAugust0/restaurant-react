@@ -10,7 +10,6 @@ import {
   TitleModal
 } from './styles'
 import close from '../../assets/image/close 1.svg'
-import { useState } from 'react'
 
 type Props = {
   preco: number

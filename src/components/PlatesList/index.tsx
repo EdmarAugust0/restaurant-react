@@ -17,7 +17,6 @@ export type Props = {
 }
 
 const PlatesList = ({ restaurant }: Props) => {
-  const [modalAberto, setModalAberto] = useState(false)
   return (
     <Container>
       <BannerFundo style={{ backgroundImage: `url(${restaurant?.capa})` }}>
@@ -29,24 +28,13 @@ const PlatesList = ({ restaurant }: Props) => {
       <div className="container">
         <List>
           {restaurant?.cardapio.map((r) => (
-            <>
-              <Plate
-                key={r.id}
-                image={r.foto}
-                title={r.nome}
-                description={r.descricao}
-                setModalAberto={setModalAberto}
-              />
-              <Modal
-                preco={r.preco}
-                description={r.descricao}
-                image={r.foto}
-                title={r.nome}
-                porcao={r.porcao}
-                modalAberto={modalAberto}
-                setModalAberto={setModalAberto}
-              />
-            </>
+            <Plate
+              key={r.id}
+              image={r.foto}
+              title={r.nome}
+              description={r.descricao}
+              cardapio={r}
+            />
           ))}
         </List>
       </div>

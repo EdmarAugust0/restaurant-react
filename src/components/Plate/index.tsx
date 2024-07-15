@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { Cardapio } from '../../Pages/Home'
 import Button from '../Button'
+import Modal from '../Modal'
 import { Card, Container, DescriptionPlate, TitlePlate } from './styles'
 
 export type Props = {
@@ -8,10 +10,11 @@ export type Props = {
   description: string
   typeFood?: string
   titleContainer?: string
-  setModalAberto: (aberto: boolean) => void
+  cardapio: Cardapio
 }
 
-const Plate = ({ image, description, title, setModalAberto }: Props) => {
+const Plate = ({ image, description, title, cardapio }: Props) => {
+  const [modalAberto, setModalAberto] = useState(false)
   const getDescription = (descricao: string) => {
     if (descricao.length > 190) {
       return descricao.slice(0, 187) + '...'
@@ -35,6 +38,15 @@ const Plate = ({ image, description, title, setModalAberto }: Props) => {
           </Button>
         </Container>
       </Card>
+      <Modal
+        preco={cardapio.preco}
+        description={cardapio.descricao}
+        image={cardapio.foto}
+        title={cardapio.nome}
+        porcao={cardapio.porcao}
+        modalAberto={modalAberto}
+        setModalAberto={setModalAberto}
+      />
     </>
   )
 }

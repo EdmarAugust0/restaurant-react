@@ -26,6 +26,8 @@ export const ModalUniversal = styled.div`
 `
 export const ModalContent = styled.div`
   position: relative;
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
 
   > div {
     padding: 32px;
@@ -64,6 +66,8 @@ export const Close = styled.img`
   right: 0;
   top: 0;
   padding: 8px;
+  cursor: pointer;
+  z-index: 1;
 `
 
 export const Img = styled.img`
