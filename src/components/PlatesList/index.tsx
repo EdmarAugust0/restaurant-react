@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { RestaurantModel } from '../../Pages/Home'
 
 import Plate from '../Plate'
@@ -17,7 +17,7 @@ export type Props = {
 }
 
 const PlatesList = ({ restaurant }: Props) => {
-  useEffect(() => console.log(restaurant), [])
+  const [modalAberto, setModalAberto] = useState(false)
   return (
     <Container>
       <BannerFundo style={{ backgroundImage: `url(${restaurant?.capa})` }}>
@@ -35,6 +35,7 @@ const PlatesList = ({ restaurant }: Props) => {
                 image={r.foto}
                 title={r.nome}
                 description={r.descricao}
+                setModalAberto={setModalAberto}
               />
               <Modal
                 preco={r.preco}
@@ -42,6 +43,8 @@ const PlatesList = ({ restaurant }: Props) => {
                 image={r.foto}
                 title={r.nome}
                 porcao={r.porcao}
+                modalAberto={modalAberto}
+                setModalAberto={setModalAberto}
               />
             </>
           ))}

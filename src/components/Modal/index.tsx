@@ -10,6 +10,7 @@ import {
   TitleModal
 } from './styles'
 import close from '../../assets/image/close 1.svg'
+import { useState } from 'react'
 
 type Props = {
   preco: number
@@ -17,9 +18,19 @@ type Props = {
   title?: string
   description?: string
   porcao?: string
+  modalAberto: boolean
+  setModalAberto: (aberto: boolean) => void
 }
 
-const Modal = ({ preco, description, image, title, porcao }: Props) => {
+const Modal = ({
+  preco,
+  description,
+  image,
+  title,
+  porcao,
+  modalAberto,
+  setModalAberto
+}: Props) => {
   const formataPreco = (preco: number) => {
     return new Intl.NumberFormat('pt-BR', {
       style: 'currency',
@@ -28,11 +39,15 @@ const Modal = ({ preco, description, image, title, porcao }: Props) => {
   }
 
   return (
-    <ModalUniversal>
+    <ModalUniversal className={modalAberto === true ? 'visible' : ''}>
       <ModalContent>
         <div className="container">
           <div>
-            <Close src={close} alt="sair" />
+            <Close
+              src={close}
+              alt="sair"
+              onClick={() => setModalAberto(false)}
+            />
           </div>
           <div>
             <Img src={image} alt={title} />
@@ -49,7 +64,7 @@ const Modal = ({ preco, description, image, title, porcao }: Props) => {
           </div>
         </div>
       </ModalContent>
-      <div className="overlay"></div>
+      <div className="overlay" onClick={() => setModalAberto(false)}></div>
     </ModalUniversal>
   )
 }
