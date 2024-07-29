@@ -1,11 +1,11 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 export const colors = {
   branco: '#fff',
   begeClaro: '#FFF8F2',
   bege: '#FFEBD9',
   orange: '#E66767',
-  darkOrange: '#b86e14'
+  black: '#000'
 }
 
 export const GlobalCss = createGlobalStyle`

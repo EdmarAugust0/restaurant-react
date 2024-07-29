@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react'
 import Header2 from '../../components/Header2'
 import PlatesList from '../../components/PlatesList'
-import { RestaurantModel } from '../Home'
 import { useParams } from 'react-router-dom'
 import { useGetPlateQuery } from '../../services/api'
 
