@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { RestaurantModel } from '../../Pages/Home'
 
 import Plate from '../Plate'
