@@ -39,11 +39,7 @@ const Plate = ({ image, description, title, cardapio }: Props) => {
         </Container>
       </Card>
       <Modal
-        preco={cardapio.preco}
-        description={cardapio.descricao}
-        image={cardapio.foto}
-        title={cardapio.nome}
-        porcao={cardapio.porcao}
+        plate={cardapio}
         modalAberto={modalAberto}
         setModalAberto={setModalAberto}
       />

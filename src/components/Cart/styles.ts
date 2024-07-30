@@ -20,8 +20,12 @@ export const CartContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
+  display: none;
   justify-content: flex-end;
+
+  &.isOpen {
+    display: flex;
+  }
 `
 
 export const SideBar = styled.div`

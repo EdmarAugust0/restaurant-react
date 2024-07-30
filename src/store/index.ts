@@ -6,7 +6,7 @@ import cartReducer from './reducers/cart'
 
 export const store = configureStore({
   reducer: {
-    art: cartReducer,
+    cart: cartReducer,
     [api.reducerPath]: api.reducer
   },
   middleware: (getDefaultMiddleware) =>

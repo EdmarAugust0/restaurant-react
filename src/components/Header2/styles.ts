@@ -12,3 +12,7 @@ export const Header2Style = styled.div`
   align-items: center;
   height: 100%;
 `
+
+export const CartButton = styled.p`
+  cursor: pointer;
+`
