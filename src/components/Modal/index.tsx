@@ -14,7 +14,7 @@ import {
 
 import close from '../../assets/image/close 1.svg'
 
-import { add } from '../../store/reducers/cart'
+import { add, open } from '../../store/reducers/cart'
 import { Cardapio } from '../../Pages/Home'
 
 type Props = {
@@ -23,18 +23,19 @@ type Props = {
   setModalAberto: (aberto: boolean) => void
 }
 
-const Modal = ({ plate, modalAberto, setModalAberto }: Props) => {
-  const formataPreco = (preco: number) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(preco)
-  }
+export const formataPreco = (preco: number) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(preco)
+}
 
+const Modal = ({ plate, modalAberto, setModalAberto }: Props) => {
   const dispatch = useDispatch()
 
   const addToCart = () => {
     dispatch(add(plate))
+    dispatch(open())
   }
 
   return (
@@ -56,7 +57,11 @@ const Modal = ({ plate, modalAberto, setModalAberto }: Props) => {
             <DescriptionModal>{plate.descricao}</DescriptionModal>
             <Porcao>{plate.porcao}</Porcao>
             <DivButton>
-              <Button title="Adicione no carrinho" type="button">
+              <Button
+                title="Adicione no carrinho"
+                type="button"
+                onClick={addToCart}
+              >
                 {`Adicionar no carrinho - ${formataPreco(plate.preco)}`}
               </Button>
             </DivButton>

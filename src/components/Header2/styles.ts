@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const ImgFundo2 = styled.div`
   width: 100%;
   height: 176px;
+  font-weight: bold;
 `
 
 export const Header2Style = styled.div`
