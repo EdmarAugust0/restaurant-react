@@ -4,8 +4,6 @@ import Button from '../Button'
 import Tag from '../Tag'
 
 import estrela from '../../assets/image/estrela.svg'
-import { useState } from 'react'
-import { RestaurantModel } from '../../Pages/Home'
 
 export type Props = {
   image: string

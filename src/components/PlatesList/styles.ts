@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const BannerFundo = styled.div`
   height: 280px;
@@ -11,6 +11,14 @@ export const List = styled.ul`
   grid-template-columns: 1fr 1fr 1fr;
   gap: 32px;
   padding: 56px 0px 112px 0px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const Container = styled.div`
