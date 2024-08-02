@@ -15,12 +15,8 @@ const RestaurantList = ({ restaurants }: Props) => {
           {restaurants.map((restaurant) => (
             <Restaurant
               key={restaurant.id}
-              image={restaurant.capa}
-              tipo={restaurant.tipo}
-              title={restaurant.titulo}
-              avaliation={restaurant.avaliacao}
-              description={restaurant.descricao}
               to={`/cardapio/${restaurant.id}`}
+              restaurant={restaurant}
             />
           ))}
         </List>
