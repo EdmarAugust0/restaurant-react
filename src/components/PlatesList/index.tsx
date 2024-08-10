@@ -19,7 +19,7 @@ const PlatesList = ({ restaurant }: Props) => {
     <Container>
       <BannerFundo style={{ backgroundImage: `url(${restaurant?.capa})` }}>
         <InfosRestaurant className="container">
-          <TypeFood>{restaurant?.tipo}</TypeFood>
+          <TypeFood>{restaurant?.tipo?.toUpperCase()}</TypeFood>
           <Title>{restaurant?.titulo}</Title>
         </InfosRestaurant>
       </BannerFundo>

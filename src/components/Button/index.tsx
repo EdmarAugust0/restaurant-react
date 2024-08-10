@@ -1,7 +1,7 @@
 import { ButtonGeral, ButtonModal } from './styles'
 
 type Props = {
-  type: 'button' | 'link'
+  type: 'button' | 'link' | 'submit'
   title: string
   to?: string
   onClick?: () => void
@@ -9,7 +9,7 @@ type Props = {
 }
 
 const Button = ({ children, onClick, title, type, to }: Props) => {
-  if (type === 'button') {
+  if (type === 'button' || type === 'submit') {
     return (
       <ButtonModal type="button" title={title} onClick={onClick}>
         {children}
