@@ -16,18 +16,12 @@ import close from '../../assets/image/close 1.svg'
 
 import { add, open } from '../../store/reducers/cart'
 import { Cardapio } from '../../Pages/Home'
+import { formataPreco } from '../../utils'
 
 type Props = {
   plate: Cardapio
   modalAberto: boolean
   setModalAberto: (aberto: boolean) => void
-}
-
-export const formataPreco = (preco: number) => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(preco)
 }
 
 const Modal = ({ plate, modalAberto, setModalAberto }: Props) => {

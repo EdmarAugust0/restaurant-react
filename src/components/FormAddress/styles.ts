@@ -1,25 +1,27 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
 
-export const FormAddress = styled.div`
+type InputGroupProps = {
+  maxWidth?: string
+}
+
+export const FormAddress = styled.form`
   h1 {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 16px;
-  }
-  .white {
-    color: ${colors.branco};
-  }
-  .black {
-    color: ${colors.black};
+    color: ${colors.bege};
   }
 `
-export const InputGroup = styled.div`
+export const InputGroup = styled.div<InputGroupProps>`
   flex: auto;
   margin-bottom: 8px;
+  max-width: ${(props) => props.maxWidth || 'auto'};
 
   label {
     font-size: 14px;
+    font-weight: bold;
+    color: ${colors.bege};
   }
 
   input {
@@ -32,6 +34,10 @@ export const InputGroup = styled.div`
     height: 32px;
     font-size: 14px;
     font-weight: bold;
+  }
+
+  small {
+    color: ${colors.bege};
   }
 `
 

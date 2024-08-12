@@ -6,7 +6,7 @@ import Address from '../FormAddress'
 
 import { RootReducer } from '../../store'
 import { close, remove } from '../../store/reducers/cart'
-import { formataPreco } from '../Modal'
+import { formataPreco } from '../../utils'
 
 import { CartContainer, CartItem, Overlay, SideBar, Total } from './styles'
 
