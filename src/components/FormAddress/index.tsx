@@ -6,6 +6,7 @@ import Button from '../Button'
 import * as Yup from 'yup'
 
 import { ButtonGroup, FormAddress, InputGroup, MiniInputGroup } from './styles'
+import { usePurchaseMutation } from '../../services/api'
 
 type Props = {
   setNext: (open: boolean) => void
@@ -13,6 +14,7 @@ type Props = {
 
 const Address = ({ setNext }: Props) => {
   const [toPayment, setToPayment] = useState(true)
+  const [purchase, { isError, isLoading, data }] = usePurchaseMutation()
 
   const formAddress = useFormik({
     initialValues: {
@@ -35,7 +37,18 @@ const Address = ({ setNext }: Props) => {
       numberHouse: Yup.string().required('Campo obrigatório')
     }),
     onSubmit: (values) => {
-      console.log(values)
+      purchase({
+        delivery: {
+          receiver: values.name,
+          address: {
+            description: values.address,
+            city: values.city,
+            zipCode: values.cep,
+            number: values.numberHouse,
+            complement: values.complement
+          }
+        }
+      })
     }
   })
 
@@ -57,7 +70,19 @@ const Address = ({ setNext }: Props) => {
       expiresYear: Yup.string().required('Campo obrigatório')
     }),
     onSubmit: (values) => {
-      console.log(values)
+      purchase({
+        payment: {
+          card: {
+            name: values.nameCard,
+            number: values.numberCard,
+            code: values.cvv,
+            expires: {
+              month: values.expiresMonth,
+              year: values.expiresYear
+            }
+          }
+        }
+      })
     }
   })
 
