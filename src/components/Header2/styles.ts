@@ -43,6 +43,7 @@ export const HeaderRow = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: auto 0;
+  height: 100%;
 `
 
 export const NavMobile = styled.nav`
