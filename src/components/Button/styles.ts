@@ -1,12 +1,11 @@
 import styled from 'styled-components'
-
 import { Link } from 'react-router-dom'
 
 import { colors } from '../../styles'
 
-export const ButtonGeral = styled(Link)`
+export const ButtonUniversal = styled(Link)`
   font-size: 14px;
-  color: ${colors.begeClaro};
+  color: ${colors.lightBeige};
   background-color: ${colors.orange};
   padding: 4px 6px;
   margin-top: 100px;
@@ -27,8 +26,8 @@ export const ButtonModal = styled.button`
   padding: 4px 6px;
   transition: 1s;
   color: ${colors.orange};
-  background-color: ${colors.bege};
-  border: 1px solid ${colors.bege};
+  background-color: ${colors.beige};
+  border: 1px solid ${colors.beige};
   width: 100%;
   cursor: pointer;
 

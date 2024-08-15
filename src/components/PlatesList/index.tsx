@@ -1,14 +1,8 @@
 import { RestaurantModel } from '../../Pages/Home'
 
 import Plate from '../Plate'
-import {
-  BannerFundo,
-  Container,
-  InfosRestaurant,
-  List,
-  Title,
-  TypeFood
-} from './styles'
+
+import * as S from './styles'
 
 export type Props = {
   restaurant?: RestaurantModel
@@ -16,15 +10,15 @@ export type Props = {
 
 const PlatesList = ({ restaurant }: Props) => {
   return (
-    <Container>
-      <BannerFundo style={{ backgroundImage: `url(${restaurant?.capa})` }}>
-        <InfosRestaurant className="container">
-          <TypeFood>{restaurant?.tipo?.toUpperCase()}</TypeFood>
-          <Title>{restaurant?.titulo}</Title>
-        </InfosRestaurant>
-      </BannerFundo>
+    <S.Container>
+      <S.BannerFundo style={{ backgroundImage: `url(${restaurant?.capa})` }}>
+        <S.InfosRestaurant className="container">
+          <S.TypeFood>{restaurant?.tipo?.toUpperCase()}</S.TypeFood>
+          <S.Title>{restaurant?.titulo}</S.Title>
+        </S.InfosRestaurant>
+      </S.BannerFundo>
       <div className="container">
-        <List>
+        <S.List>
           {restaurant?.cardapio.map((r) => (
             <Plate
               key={r.id}
@@ -34,9 +28,9 @@ const PlatesList = ({ restaurant }: Props) => {
               cardapio={r}
             />
           ))}
-        </List>
+        </S.List>
       </div>
-    </Container>
+    </S.Container>
   )
 }
 

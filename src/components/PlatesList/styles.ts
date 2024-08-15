@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { breakpoints, colors } from '../../styles'
 
 export const BannerFundo = styled.div`
@@ -22,7 +23,7 @@ export const List = styled.ul`
 `
 
 export const Container = styled.div`
-  background-color: ${colors.begeClaro};
+  background-color: ${colors.lightBeige};
 `
 
 export const InfosRestaurant = styled.div`
@@ -35,10 +36,10 @@ export const InfosRestaurant = styled.div`
 
 export const TypeFood = styled.h3`
   font-weight: 100;
-  color: ${colors.branco};
+  color: ${colors.white};
 `
 
 export const Title = styled.h3`
   font-weight: bold;
-  color: ${colors.branco};
+  color: ${colors.white};
 `

@@ -24,12 +24,12 @@ export const Container = styled.div`
 export const TitlePlate = styled.h6`
   font-size: 16px;
   font-weight: bold;
-  color: ${colors.begeClaro};
+  color: ${colors.lightBeige};
   margin: 8px 0px;
 `
 
 export const DescriptionPlate = styled.p`
-  color: ${colors.begeClaro};
+  color: ${colors.lightBeige};
   font-size: 14px;
   margin-bottom: 8px;
 `

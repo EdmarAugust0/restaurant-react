@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { colors } from '../../styles'
 
 export const FooterGeral = styled.div`
-  background-color: ${colors.bege};
+  background-color: ${colors.beige};
 `
 
 export const FooterContent = styled.div`

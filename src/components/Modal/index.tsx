@@ -1,22 +1,14 @@
 import { useDispatch } from 'react-redux'
 
+import { Cardapio } from '../../Pages/Home'
 import Button from '../Button'
-import {
-  Close,
-  DescriptionModal,
-  DivButton,
-  Img,
-  ModalContent,
-  ModalUniversal,
-  Porcao,
-  TitleModal
-} from './styles'
 
 import close from '../../assets/image/close 1.svg'
 
 import { add, open } from '../../store/reducers/cart'
-import { Cardapio } from '../../Pages/Home'
-import { formataPreco } from '../../utils'
+import { convertToBRL } from '../../utils'
+
+import * as S from './styles'
 
 type Props = {
   plate: Cardapio
@@ -33,37 +25,37 @@ const Modal = ({ plate, modalAberto, setModalAberto }: Props) => {
   }
 
   return (
-    <ModalUniversal className={modalAberto === true ? 'visible' : ''}>
-      <ModalContent>
+    <S.ModalUniversal className={modalAberto === true ? 'visible' : ''}>
+      <S.ModalContent>
         <div className="container">
           <div>
-            <Close
+            <S.Close
               src={close}
               alt="sair"
               onClick={() => setModalAberto(false)}
             />
           </div>
           <div>
-            <Img src={plate.foto} alt={plate.nome} />
+            <S.Img src={plate.foto} alt={plate.nome} />
           </div>
           <div>
-            <TitleModal>{plate.nome}</TitleModal>
-            <DescriptionModal>{plate.descricao}</DescriptionModal>
-            <Porcao>{plate.porcao}</Porcao>
-            <DivButton>
+            <S.TitleModal>{plate.nome}</S.TitleModal>
+            <S.DescriptionModal>{plate.descricao}</S.DescriptionModal>
+            <S.Porcao>{plate.porcao}</S.Porcao>
+            <S.DivButton>
               <Button
                 title="Clique para adicionar no carrinho"
                 type="button"
                 onClick={addToCart}
               >
-                {`Adicionar no carrinho - ${formataPreco(plate.preco)}`}
+                {`Adicionar no carrinho - ${convertToBRL(plate.preco)}`}
               </Button>
-            </DivButton>
+            </S.DivButton>
           </div>
         </div>
-      </ModalContent>
+      </S.ModalContent>
       <div className="overlay" onClick={() => setModalAberto(false)}></div>
-    </ModalUniversal>
+    </S.ModalUniversal>
   )
 }
 

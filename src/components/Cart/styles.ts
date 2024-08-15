@@ -47,7 +47,7 @@ export const Total = styled.div`
   margin-top: 32px;
 
   p {
-    color: ${colors.bege};
+    color: ${colors.beige};
     font-size: 16px;
   }
 `
@@ -55,7 +55,7 @@ export const Total = styled.div`
 export const CartItem = styled.li`
   display: flex;
   margin-bottom: 16px;
-  background-color: ${colors.bege};
+  background-color: ${colors.beige};
   padding: 8px;
   position: relative;
 

@@ -1,4 +1,4 @@
-import { ButtonGeral, ButtonModal } from './styles'
+import * as S from './styles'
 
 type Props = {
   type: 'button' | 'link' | 'submit'
@@ -11,15 +11,15 @@ type Props = {
 const Button = ({ children, onClick, title, type, to }: Props) => {
   if (type === 'button' || type === 'submit') {
     return (
-      <ButtonModal type="button" title={title} onClick={onClick}>
+      <S.ButtonModal type="button" title={title} onClick={onClick}>
         {children}
-      </ButtonModal>
+      </S.ButtonModal>
     )
   }
   return (
-    <ButtonGeral type="link" title={title} to={to as string}>
+    <S.ButtonUniversal type="link" title={title} to={to as string}>
       {children}
-    </ButtonGeral>
+    </S.ButtonUniversal>
   )
 }
 

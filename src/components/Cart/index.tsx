@@ -6,13 +6,13 @@ import Address from '../FormAddress'
 
 import { RootReducer } from '../../store'
 import { close, remove } from '../../store/reducers/cart'
-import { formataPreco } from '../../utils'
+import { convertToBRL } from '../../utils'
 
-import { CartContainer, CartItem, Overlay, SideBar, Total } from './styles'
+import * as S from './styles'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
-  const [next, setNext] = useState(false)
+  const [toDeliveryAddress, setToDeliveryAddress] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -30,48 +30,48 @@ const Cart = () => {
     }, 0)
   }
 
-  if (next) {
+  if (toDeliveryAddress) {
     return (
-      <CartContainer className={isOpen ? 'isOpen' : ''}>
-        <Overlay onClick={isClose} />
-        <SideBar>
-          <Address setNext={setNext} />
-        </SideBar>
-      </CartContainer>
+      <S.CartContainer className={isOpen ? 'isOpen' : ''}>
+        <S.Overlay onClick={isClose} />
+        <S.SideBar>
+          <Address setToDeliveryAddress={setToDeliveryAddress} />
+        </S.SideBar>
+      </S.CartContainer>
     )
   }
-  if (!next) {
+  if (!toDeliveryAddress) {
     return (
-      <CartContainer className={isOpen ? 'isOpen' : ''}>
-        <Overlay onClick={isClose} />
-        <SideBar>
+      <S.CartContainer className={isOpen ? 'isOpen' : ''}>
+        <S.Overlay onClick={isClose} />
+        <S.SideBar>
           <>
             <ul>
               {items.map((item) => (
-                <CartItem key={item.id}>
+                <S.CartItem key={item.id}>
                   <img src={item.foto} alt={item.nome} />
                   <div>
                     <h3>{item.nome}</h3>
-                    <p>{formataPreco(item.preco)}</p>
+                    <p>{convertToBRL(item.preco)}</p>
                   </div>
                   <button type="button" onClick={() => removeItem(item.id)} />
-                </CartItem>
+                </S.CartItem>
               ))}
             </ul>
-            <Total>
+            <S.Total>
               <p>Valor total:</p>
-              <p>{formataPreco(getTotalPrice())}</p>
-            </Total>
+              <p>{convertToBRL(getTotalPrice())}</p>
+            </S.Total>
             <Button
               type="button"
               title="Clique para continuar com a compra"
-              onClick={() => setNext(true)}
+              onClick={() => setToDeliveryAddress(true)}
             >
               Continuar com a entrega
             </Button>
           </>
-        </SideBar>
-      </CartContainer>
+        </S.SideBar>
+      </S.CartContainer>
     )
   } else {
     return <h1>error</h1>

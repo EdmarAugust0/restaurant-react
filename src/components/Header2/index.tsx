@@ -1,20 +1,14 @@
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-
-import {
-  CartButton,
-  Hamburguer,
-  HeaderRow,
-  ImgFundo2,
-  NavMobile
-} from './styles'
+import { useState } from 'react'
 
 import { open } from '../../store/reducers/cart'
 import { RootReducer } from '../../store'
 
 import LogoHeader from '../../assets/image/logoHeader.svg'
 import header2 from '../../assets/image/header2.svg'
-import { useState } from 'react'
+
+import * as S from './styles'
 
 const Header2 = () => {
   const dispatch = useDispatch()
@@ -26,9 +20,9 @@ const Header2 = () => {
   }
 
   return (
-    <ImgFundo2 style={{ backgroundImage: `url(${header2})` }}>
+    <S.ImgFundo2 style={{ backgroundImage: `url(${header2})` }}>
       <div>
-        <HeaderRow className="container">
+        <S.HeaderRow className="container">
           <Link
             className="linkHome"
             to="/"
@@ -37,19 +31,19 @@ const Header2 = () => {
             Restaurantes
           </Link>
           <img src={LogoHeader} alt="logo" />
-          <Hamburguer onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <S.Hamburguer onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <span />
             <span />
             <span />
-          </Hamburguer>
-          <CartButton
+          </S.Hamburguer>
+          <S.CartButton
             onClick={openCart}
             title="Clique para acessar o carrinho de compras"
           >
             {items.length} produto(s) no carrinho
-          </CartButton>
-        </HeaderRow>
-        <NavMobile className={isMenuOpen ? 'isOpen' : ''}>
+          </S.CartButton>
+        </S.HeaderRow>
+        <S.NavMobile className={isMenuOpen ? 'isOpen' : ''}>
           <Link
             className="linkHome"
             to="/"
@@ -58,15 +52,15 @@ const Header2 = () => {
           >
             Restaurantes
           </Link>
-          <CartButton
+          <S.CartButton
             onClick={openCart}
             title="Clique para acessar o carrinho de compras"
           >
             {items.length} produto(s) no carrinho
-          </CartButton>
-        </NavMobile>
+          </S.CartButton>
+        </S.NavMobile>
       </div>
-    </ImgFundo2>
+    </S.ImgFundo2>
   )
 }
 

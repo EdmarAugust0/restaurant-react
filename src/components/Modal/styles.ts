@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { colors } from '../../styles'
 import { ButtonModal } from '../Button/styles'
 
@@ -42,27 +43,27 @@ export const ModalContent = styled.div`
   }
 `
 export const Porcao = styled.p`
-  color: ${colors.begeClaro};
+  color: ${colors.lightBeige};
   font-size: 14px;
   margin-bottom: 16px;
 `
 export const DivButton = styled.button`
   display: inline-block;
-  border: 1px solid ${colors.bege};
+  border: 1px solid ${colors.beige};
 
   ${ButtonModal} {
-    border: 1px solid ${colors.bege};
+    border: 1px solid ${colors.beige};
   }
 `
 
 export const TitleModal = styled.h6`
   font-size: 16px;
   font-weight: bold;
-  color: ${colors.begeClaro};
+  color: ${colors.lightBeige};
   margin: 16px 0px;
 `
 export const DescriptionModal = styled.p`
-  color: ${colors.begeClaro};
+  color: ${colors.lightBeige};
   font-size: 14px;
   margin-bottom: 16px;
 `

@@ -9,10 +9,10 @@ import { usePurchaseMutation } from '../../services/api'
 import * as S from './styles'
 
 type Props = {
-  setNext: (open: boolean) => void
+  setToDeliveryAddress: (open: boolean) => void
 }
 
-const Address = ({ setNext }: Props) => {
+const Address = ({ setToDeliveryAddress }: Props) => {
   const [toPayment, setToPayment] = useState(false)
   const [purchase, { data, isSuccess }] = usePurchaseMutation()
 
@@ -306,7 +306,7 @@ const Address = ({ setNext }: Props) => {
         <Button
           type="button"
           title="Voltar para o carrinho"
-          onClick={() => setNext(false)}
+          onClick={() => setToDeliveryAddress(false)}
         >
           Voltar para o carrinho
         </Button>

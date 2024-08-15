@@ -4,7 +4,7 @@ import { colors } from '../../styles'
 
 export const Card = styled.div`
   position: relative;
-  background-color: ${colors.branco};
+  background-color: ${colors.white};
   margin-bottom: 48px;
   border: 1px solid ${colors.orange};
 

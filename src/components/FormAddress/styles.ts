@@ -11,7 +11,7 @@ export const FormAddress = styled.form`
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 16px;
-    color: ${colors.bege};
+    color: ${colors.beige};
   }
 `
 export const InputGroup = styled.div<InputGroupProps>`
@@ -22,13 +22,13 @@ export const InputGroup = styled.div<InputGroupProps>`
   label {
     font-size: 14px;
     font-weight: bold;
-    color: ${colors.bege};
+    color: ${colors.beige};
   }
 
   input {
-    background-color: ${colors.bege};
+    background-color: ${colors.beige};
     color: ${colors.black};
-    border: 1px solid ${colors.bege};
+    border: 1px solid ${colors.beige};
     padding: 8px;
     margin-top: 8px;
     width: 100%;
@@ -38,7 +38,7 @@ export const InputGroup = styled.div<InputGroupProps>`
   }
 
   small {
-    color: ${colors.bege};
+    color: ${colors.beige};
   }
 `
 
@@ -62,7 +62,7 @@ export const Feedback = styled.div`
 
   h1,
   p {
-    color: ${colors.bege};
+    color: ${colors.beige};
   }
 
   ${ButtonModal} {

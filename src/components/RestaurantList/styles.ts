@@ -1,8 +1,9 @@
 import styled from 'styled-components'
+
 import { breakpoints, colors } from '../../styles'
 
 export const Container = styled.div`
-  background-color: ${colors.begeClaro};
+  background-color: ${colors.lightBeige};
 `
 
 export const List = styled.ul`

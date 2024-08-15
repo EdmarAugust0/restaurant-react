@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { breakpoints, colors } from '../../styles'
 
 export const ImgFundo2 = styled.div`
@@ -63,7 +64,7 @@ export const NavMobile = styled.nav`
     width: 341px;
     ${CartButton} ,
   .linkHome {
-      color: ${colors.bege};
+      color: ${colors.beige};
       background-color: ${colors.orange};
       display: block;
       padding: 16px;

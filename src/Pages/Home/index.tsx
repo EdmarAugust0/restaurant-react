@@ -1,6 +1,7 @@
+import { useGetFeatureRestaurantQuery } from '../../services/api'
+
 import Header1 from '../../components/Header1'
 import RestaurantList from '../../components/RestaurantList'
-import { useGetFeatureRestaurantQuery } from '../../services/api'
 
 export type RestaurantModel = {
   id: number

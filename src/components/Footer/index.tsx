@@ -5,14 +5,14 @@ import insta from '../../assets/image/insta.svg'
 import facebook from '../../assets/image/facebook.svg'
 import twitter from '../../assets/image/twitter.svg'
 
-import { Description, FooterContent, FooterGeral, Links } from './styles'
+import * as S from './styles'
 
 const Footer = () => {
   return (
-    <FooterGeral>
-      <FooterContent className="container">
+    <S.FooterGeral>
+      <S.FooterContent className="container">
         <img src={logoHeader} alt="" />
-        <Links>
+        <S.Links>
           <li>
             <Link to="#" title="Clique para acessar nosso instagram">
               <img src={insta} alt="insta" />
@@ -28,14 +28,14 @@ const Footer = () => {
               <img src={twitter} alt="twitter" />
             </Link>
           </li>
-        </Links>
-        <Description>
+        </S.Links>
+        <S.Description>
           A efood é uma plataforma para divulgação de estabelecimentos, a
           responsabilidade pela entrega, qualidade dos produtos é toda do
           estabelecimento contratado.
-        </Description>
-      </FooterContent>
-    </FooterGeral>
+        </S.Description>
+      </S.FooterContent>
+    </S.FooterGeral>
   )
 }
 

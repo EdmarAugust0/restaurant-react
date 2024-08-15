@@ -1,8 +1,10 @@
 import { useState } from 'react'
+
 import { Cardapio } from '../../Pages/Home'
 import Button from '../Button'
 import Modal from '../Modal'
-import { Card, Container, DescriptionPlate, TitlePlate } from './styles'
+
+import * as S from './styles'
 
 export type Props = {
   image: string
@@ -15,20 +17,20 @@ export type Props = {
 
 const Plate = ({ image, description, title, cardapio }: Props) => {
   const [modalAberto, setModalAberto] = useState(false)
-  const getDescription = (descricao: string) => {
-    if (descricao.length > 193) {
-      return descricao.slice(0, 190) + '...'
+  const getDescription = (text: string) => {
+    if (text.length > 193) {
+      return text.slice(0, 190) + '...'
     }
-    return descricao
+    return text
   }
 
   return (
     <>
-      <Card>
-        <Container>
+      <S.Card>
+        <S.Container>
           <img src={image} alt={title} />
-          <TitlePlate>{title}</TitlePlate>
-          <DescriptionPlate>{getDescription(description)}</DescriptionPlate>
+          <S.TitlePlate>{title}</S.TitlePlate>
+          <S.DescriptionPlate>{getDescription(description)}</S.DescriptionPlate>
           <Button
             title={`Clique para ver os detalhes do prato ${title}`}
             type="button"
@@ -36,8 +38,8 @@ const Plate = ({ image, description, title, cardapio }: Props) => {
           >
             Mais detalhes
           </Button>
-        </Container>
-      </Card>
+        </S.Container>
+      </S.Card>
       <Modal
         plate={cardapio}
         modalAberto={modalAberto}

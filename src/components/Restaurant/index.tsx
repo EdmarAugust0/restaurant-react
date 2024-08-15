@@ -1,10 +1,11 @@
-import { Card, Description, HeaderCard, Infos, Title } from './styles'
+import { RestaurantModel } from '../../Pages/Home'
 
 import Button from '../Button'
 import Tag from '../Tag'
 
 import estrela from '../../assets/image/estrela.svg'
-import { RestaurantModel } from '../../Pages/Home'
+
+import * as S from './styles'
 
 export type Props = {
   restaurant: RestaurantModel
@@ -19,23 +20,23 @@ const Restaurant = ({ to, restaurant }: Props) => {
     return descricao
   }
   return (
-    <Card>
+    <S.Card>
       <img src={restaurant.capa} alt={restaurant.titulo} />
-      <Infos>
+      <S.Infos>
         {restaurant.destacado ? <Tag>Destaque da semana</Tag> : ''}
         {/* as funções abaixo são para deixar a primeira letra em maiúscula */}
         <Tag>
           {restaurant.tipo[0].toUpperCase() + restaurant.tipo.substr(1)}
         </Tag>
-      </Infos>
-      <HeaderCard>
-        <Title>{restaurant.titulo}</Title>
+      </S.Infos>
+      <S.HeaderCard>
+        <S.Title>{restaurant.titulo}</S.Title>
         <div>
           <span>{restaurant.avaliacao}</span>
           <img src={estrela} alt="estrela" />
         </div>
-      </HeaderCard>
-      <Description>{getDescricao(restaurant.descricao)}</Description>
+      </S.HeaderCard>
+      <S.Description>{getDescricao(restaurant.descricao)}</S.Description>
       <div>
         <Button
           type="link"
@@ -45,7 +46,7 @@ const Restaurant = ({ to, restaurant }: Props) => {
           Saiba mais
         </Button>
       </div>
-    </Card>
+    </S.Card>
   )
 }
 
