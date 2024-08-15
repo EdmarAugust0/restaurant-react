@@ -2,17 +2,11 @@ import { useState } from 'react'
 import { useFormik } from 'formik'
 
 import Button from '../Button'
-
 import * as Yup from 'yup'
 
-import {
-  ButtonGroup,
-  Feedback,
-  FormAddress,
-  InputGroup,
-  MiniInputGroup
-} from './styles'
 import { usePurchaseMutation } from '../../services/api'
+
+import * as S from './styles'
 
 type Props = {
   setNext: (open: boolean) => void
@@ -20,8 +14,7 @@ type Props = {
 
 const Address = ({ setNext }: Props) => {
   const [toPayment, setToPayment] = useState(false)
-  const [purchase, { isError, isLoading, data, isSuccess }] =
-    usePurchaseMutation()
+  const [purchase, { data, isSuccess }] = usePurchaseMutation()
 
   const form = useFormik({
     initialValues: {
@@ -101,7 +94,7 @@ const Address = ({ setNext }: Props) => {
 
   if (isSuccess) {
     return (
-      <Feedback>
+      <S.Feedback>
         <h1>Pedido realizado - {data.orderId}</h1>
         <p className="margin-top">
           Estamos felizes em informar que seu pedido já está em processo de
@@ -123,16 +116,16 @@ const Address = ({ setNext }: Props) => {
         <Button type="button" title="Concluir o pedido">
           Concluir
         </Button>
-      </Feedback>
+      </S.Feedback>
     )
   }
 
   if (toPayment) {
     return (
-      <FormAddress onSubmit={form.handleSubmit}>
+      <S.FormAddress onSubmit={form.handleSubmit}>
         <h1>Pagamento - Valor a pagar R$ 200,00 </h1>
         <div>
-          <InputGroup>
+          <S.InputGroup>
             <label htmlFor="nameCard">Nome no cartão</label>
             <input
               type="text"
@@ -143,9 +136,9 @@ const Address = ({ setNext }: Props) => {
               onBlur={form.handleBlur}
             />
             <small>{getErrorMessage('nameCard', form.errors.nameCard)}</small>
-          </InputGroup>
-          <MiniInputGroup>
-            <InputGroup>
+          </S.InputGroup>
+          <S.MiniInputGroup>
+            <S.InputGroup>
               <label htmlFor="numberCard">Número do cartão</label>
               <input
                 type="text"
@@ -158,8 +151,8 @@ const Address = ({ setNext }: Props) => {
               <small>
                 {getErrorMessage('numberCard', form.errors.numberCard)}
               </small>
-            </InputGroup>
-            <InputGroup maxWidth="88px">
+            </S.InputGroup>
+            <S.InputGroup maxWidth="88px">
               <label htmlFor="cvv">CVV</label>
               <input
                 type="text"
@@ -170,10 +163,10 @@ const Address = ({ setNext }: Props) => {
                 onBlur={form.handleBlur}
               />
               <small>{getErrorMessage('cvv', form.errors.cvv)}</small>
-            </InputGroup>
-          </MiniInputGroup>
-          <MiniInputGroup>
-            <InputGroup>
+            </S.InputGroup>
+          </S.MiniInputGroup>
+          <S.MiniInputGroup>
+            <S.InputGroup>
               <label htmlFor="expiresMonth">Mês de vencimento</label>
               <input
                 type="text"
@@ -186,8 +179,8 @@ const Address = ({ setNext }: Props) => {
               <small>
                 {getErrorMessage('expiresMonth', form.errors.expiresMonth)}
               </small>
-            </InputGroup>
-            <InputGroup>
+            </S.InputGroup>
+            <S.InputGroup>
               <label htmlFor="expiresYear">Ano de vencimento</label>
               <input
                 type="text"
@@ -200,10 +193,10 @@ const Address = ({ setNext }: Props) => {
               <small>
                 {getErrorMessage('expiresYear', form.errors.expiresYear)}
               </small>
-            </InputGroup>
-          </MiniInputGroup>
+            </S.InputGroup>
+          </S.MiniInputGroup>
         </div>
-        <ButtonGroup>
+        <S.ButtonGroup>
           <Button
             type="submit"
             title="Finalizar pagamento"
@@ -218,15 +211,15 @@ const Address = ({ setNext }: Props) => {
           >
             Voltar para a edição de endereço
           </Button>
-        </ButtonGroup>
-      </FormAddress>
+        </S.ButtonGroup>
+      </S.FormAddress>
     )
   }
   return (
-    <FormAddress onSubmit={form.handleSubmit}>
+    <S.FormAddress onSubmit={form.handleSubmit}>
       <h1>Entrega</h1>
       <div>
-        <InputGroup>
+        <S.InputGroup>
           <label htmlFor="name">Quem irá receber</label>
           <input
             type="text"
@@ -237,8 +230,8 @@ const Address = ({ setNext }: Props) => {
             onBlur={form.handleBlur}
           />
           <small>{getErrorMessage('name', form.errors.name)}</small>
-        </InputGroup>
-        <InputGroup>
+        </S.InputGroup>
+        <S.InputGroup>
           <label htmlFor="address">Endereço</label>
           <input
             type="text"
@@ -249,8 +242,8 @@ const Address = ({ setNext }: Props) => {
             onBlur={form.handleBlur}
           />
           <small>{getErrorMessage('address', form.errors.address)}</small>
-        </InputGroup>
-        <InputGroup>
+        </S.InputGroup>
+        <S.InputGroup>
           <label htmlFor="city">Cidade</label>
           <input
             type="text"
@@ -261,9 +254,9 @@ const Address = ({ setNext }: Props) => {
             onBlur={form.handleBlur}
           />
           <small>{getErrorMessage('city', form.errors.city)}</small>
-        </InputGroup>
-        <MiniInputGroup>
-          <InputGroup>
+        </S.InputGroup>
+        <S.MiniInputGroup>
+          <S.InputGroup>
             <label htmlFor="cep">CEP</label>
             <input
               type="text"
@@ -274,8 +267,8 @@ const Address = ({ setNext }: Props) => {
               onBlur={form.handleBlur}
             />
             <small>{getErrorMessage('cep', form.errors.cep)}</small>
-          </InputGroup>
-          <InputGroup>
+          </S.InputGroup>
+          <S.InputGroup>
             <label htmlFor="numberHouse">Número</label>
             <input
               type="text"
@@ -288,9 +281,9 @@ const Address = ({ setNext }: Props) => {
             <small>
               {getErrorMessage('numberHouse', form.errors.numberHouse)}
             </small>
-          </InputGroup>
-        </MiniInputGroup>
-        <InputGroup>
+          </S.InputGroup>
+        </S.MiniInputGroup>
+        <S.InputGroup>
           <label htmlFor="complement">Complemento (opcional)</label>
           <input
             type="text"
@@ -300,9 +293,9 @@ const Address = ({ setNext }: Props) => {
             onChange={form.handleChange}
             onBlur={form.handleBlur}
           />
-        </InputGroup>
+        </S.InputGroup>
       </div>
-      <ButtonGroup>
+      <S.ButtonGroup>
         <Button
           type="submit"
           title="Continuar com o pagamento"
@@ -317,8 +310,8 @@ const Address = ({ setNext }: Props) => {
         >
           Voltar para o carrinho
         </Button>
-      </ButtonGroup>
-    </FormAddress>
+      </S.ButtonGroup>
+    </S.FormAddress>
   )
 }
 

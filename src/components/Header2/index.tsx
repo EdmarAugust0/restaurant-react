@@ -29,7 +29,11 @@ const Header2 = () => {
     <ImgFundo2 style={{ backgroundImage: `url(${header2})` }}>
       <div>
         <HeaderRow className="container">
-          <Link className="linkHome" to="/">
+          <Link
+            className="linkHome"
+            to="/"
+            title="Clique para voltar a escolha de restaurantes"
+          >
             Restaurantes
           </Link>
           <img src={LogoHeader} alt="logo" />
@@ -38,15 +42,26 @@ const Header2 = () => {
             <span />
             <span />
           </Hamburguer>
-          <CartButton onClick={openCart}>
+          <CartButton
+            onClick={openCart}
+            title="Clique para acessar o carrinho de compras"
+          >
             {items.length} produto(s) no carrinho
           </CartButton>
         </HeaderRow>
         <NavMobile className={isMenuOpen ? 'isOpen' : ''}>
-          <Link className="linkHome" to="/">
+          <Link
+            className="linkHome"
+            to="/"
+            title="Clique para voltar a escolha de restaurantes"
+            onClick={() => setIsMenuOpen(false)}
+          >
             Restaurantes
           </Link>
-          <CartButton onClick={openCart}>
+          <CartButton
+            onClick={openCart}
+            title="Clique para acessar o carrinho de compras"
+          >
             {items.length} produto(s) no carrinho
           </CartButton>
         </NavMobile>

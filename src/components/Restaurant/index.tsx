@@ -37,7 +37,11 @@ const Restaurant = ({ to, restaurant }: Props) => {
       </HeaderCard>
       <Description>{getDescricao(restaurant.descricao)}</Description>
       <div>
-        <Button type="link" to={to} title="Veja o menu">
+        <Button
+          type="link"
+          to={to}
+          title={`Clique para ver o cardápio do ${restaurant.titulo}`}
+        >
           Saiba mais
         </Button>
       </div>

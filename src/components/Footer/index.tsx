@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import logoHeader from '../../assets/image/logoHeader.svg'
 import insta from '../../assets/image/insta.svg'
 import facebook from '../../assets/image/facebook.svg'
@@ -12,19 +14,19 @@ const Footer = () => {
         <img src={logoHeader} alt="" />
         <Links>
           <li>
-            <a href="#">
+            <Link to="#" title="Clique para acessar nosso instagram">
               <img src={insta} alt="insta" />
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#">
+            <Link to="#" title="Clique para acessar nosso Facebook">
               <img src={facebook} alt="facebook" />
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#">
+            <Link to="#" title="Clique para acessar nosso Twitter">
               <img src={twitter} alt="twitter" />
-            </a>
+            </Link>
           </li>
         </Links>
         <Description>

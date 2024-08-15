@@ -52,7 +52,7 @@ const Modal = ({ plate, modalAberto, setModalAberto }: Props) => {
             <Porcao>{plate.porcao}</Porcao>
             <DivButton>
               <Button
-                title="Adicione no carrinho"
+                title="Clique para adicionar no carrinho"
                 type="button"
                 onClick={addToCart}
               >

@@ -4,6 +4,7 @@ import { breakpoints, colors } from '../../styles'
 
 export const Card = styled.div`
   background-color: ${colors.orange};
+  height: 100%;
 `
 export const Container = styled.div`
   padding: 8px;

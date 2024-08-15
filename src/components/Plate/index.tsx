@@ -30,7 +30,7 @@ const Plate = ({ image, description, title, cardapio }: Props) => {
           <TitlePlate>{title}</TitlePlate>
           <DescriptionPlate>{getDescription(description)}</DescriptionPlate>
           <Button
-            title="Veja o preço"
+            title={`Clique para ver os detalhes do prato ${title}`}
             type="button"
             onClick={() => setModalAberto(true)}
           >
