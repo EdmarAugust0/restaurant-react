@@ -34,4 +34,8 @@ export const GlobalCss = createGlobalStyle`
     }
   }
 
+  .margin-top {
+    margin-top: 16px;
+  }
+
 `

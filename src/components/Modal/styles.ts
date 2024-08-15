@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import { breakpoints, colors } from '../../styles'
+import { colors } from '../../styles'
+import { ButtonModal } from '../Button/styles'
 
 export const ModalUniversal = styled.div`
   position: fixed;
@@ -47,6 +48,11 @@ export const Porcao = styled.p`
 `
 export const DivButton = styled.button`
   display: inline-block;
+  border: 1px solid ${colors.bege};
+
+  ${ButtonModal} {
+    border: 1px solid ${colors.bege};
+  }
 `
 
 export const TitleModal = styled.h6`

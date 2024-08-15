@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
+import { ButtonModal } from '../Button/styles'
 
 type InputGroupProps = {
   maxWidth?: string
@@ -52,5 +53,19 @@ export const ButtonGroup = styled.div`
   button {
     margin-bottom: 8px;
     font-weight: bold;
+  }
+`
+export const Feedback = styled.div`
+  h1 {
+    font-size: 16px;
+  }
+
+  h1,
+  p {
+    color: ${colors.bege};
+  }
+
+  ${ButtonModal} {
+    margin-top: 16px;
   }
 `

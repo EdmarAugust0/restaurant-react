@@ -5,7 +5,13 @@ import Button from '../Button'
 
 import * as Yup from 'yup'
 
-import { ButtonGroup, FormAddress, InputGroup, MiniInputGroup } from './styles'
+import {
+  ButtonGroup,
+  Feedback,
+  FormAddress,
+  InputGroup,
+  MiniInputGroup
+} from './styles'
 import { usePurchaseMutation } from '../../services/api'
 
 type Props = {
@@ -14,7 +20,8 @@ type Props = {
 
 const Address = ({ setNext }: Props) => {
   const [toPayment, setToPayment] = useState(false)
-  const [purchase, { isError, isLoading, data }] = usePurchaseMutation()
+  const [purchase, { isError, isLoading, data, isSuccess }] =
+    usePurchaseMutation()
 
   const form = useFormik({
     initialValues: {
@@ -50,6 +57,8 @@ const Address = ({ setNext }: Props) => {
       expiresYear: Yup.string().required('Campo obrigatório')
     }),
     onSubmit: (values) => {
+      console.log('aaa')
+
       purchase({
         delivery: {
           receiver: values.name,
@@ -88,6 +97,34 @@ const Address = ({ setNext }: Props) => {
 
     if (isTouched && isInvalid) return message
     return ''
+  }
+
+  if (isSuccess) {
+    return (
+      <Feedback>
+        <h1>Pedido realizado - {data.orderId}</h1>
+        <p className="margin-top">
+          Estamos felizes em informar que seu pedido já está em processo de
+          preparação e, em breve, será entregue no endereço fornecido.
+        </p>
+        <p className="margin-top">
+          Gostaríamos de ressaltar que nossos entregadores não estão autorizados
+          a realizar cobranças extras.
+        </p>
+        <p className="margin-top">
+          Lembre-se da importância de higienizar as mãos após o recebimento do
+          pedido, garantindo assim sua segurança e bem-estar durante a refeição.
+        </p>
+        <p className="margin-top">
+          Esperamos que desfrute de uma deliciosa e agradável experiência
+          gastronômica. Bom apetite!
+        </p>
+
+        <Button type="button" title="Concluir o pedido">
+          Concluir
+        </Button>
+      </Feedback>
+    )
   }
 
   if (toPayment) {
