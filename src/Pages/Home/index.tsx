@@ -2,6 +2,7 @@ import { useGetFeatureRestaurantQuery } from '../../services/api'
 
 import Header1 from '../../components/Header1'
 import RestaurantList from '../../components/RestaurantList'
+import Loader from '../../components/Loader'
 
 export type RestaurantModel = {
   id: number
@@ -35,7 +36,7 @@ const Home = () => {
     )
   }
 
-  return <h4>Carregando...</h4>
+  return <Loader />
 }
 
 export default Home
