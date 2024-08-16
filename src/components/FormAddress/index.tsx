@@ -84,12 +84,22 @@ const Address = ({ setToDeliveryAddress }: Props) => {
     }
   })
 
-  const getErrorMessage = (fieldName: string, message?: string) => {
+  const checkInputHasError = (fieldName: string) => {
     const isTouched = fieldName in form.touched
     const isInvalid = fieldName in form.errors
+    const hasError = isTouched && isInvalid
 
-    if (isTouched && isInvalid) return message
-    return ''
+    return hasError
+  }
+
+  const hasAddressErrors = () => {
+    return (
+      !!form.errors.name ||
+      !!form.errors.address ||
+      !!form.errors.city ||
+      !!form.errors.cep ||
+      !!form.errors.numberHouse
+    )
   }
 
   if (isSuccess) {
@@ -134,8 +144,8 @@ const Address = ({ setToDeliveryAddress }: Props) => {
               value={form.values.nameCard}
               onChange={form.handleChange}
               onBlur={form.handleBlur}
+              className={checkInputHasError('nameCard') ? 'error' : ''}
             />
-            <small>{getErrorMessage('nameCard', form.errors.nameCard)}</small>
           </S.InputGroup>
           <S.MiniInputGroup>
             <S.InputGroup>
@@ -147,10 +157,8 @@ const Address = ({ setToDeliveryAddress }: Props) => {
                 value={form.values.numberCard}
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
+                className={checkInputHasError('numberCard') ? 'error' : ''}
               />
-              <small>
-                {getErrorMessage('numberCard', form.errors.numberCard)}
-              </small>
             </S.InputGroup>
             <S.InputGroup maxWidth="88px">
               <label htmlFor="cvv">CVV</label>
@@ -161,8 +169,8 @@ const Address = ({ setToDeliveryAddress }: Props) => {
                 value={form.values.cvv}
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
+                className={checkInputHasError('cvv') ? 'error' : ''}
               />
-              <small>{getErrorMessage('cvv', form.errors.cvv)}</small>
             </S.InputGroup>
           </S.MiniInputGroup>
           <S.MiniInputGroup>
@@ -175,10 +183,8 @@ const Address = ({ setToDeliveryAddress }: Props) => {
                 value={form.values.expiresMonth}
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
+                className={checkInputHasError('expiresMonth') ? 'error' : ''}
               />
-              <small>
-                {getErrorMessage('expiresMonth', form.errors.expiresMonth)}
-              </small>
             </S.InputGroup>
             <S.InputGroup>
               <label htmlFor="expiresYear">Ano de vencimento</label>
@@ -189,10 +195,8 @@ const Address = ({ setToDeliveryAddress }: Props) => {
                 value={form.values.expiresYear}
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
+                className={checkInputHasError('expiresYear') ? 'error' : ''}
               />
-              <small>
-                {getErrorMessage('expiresYear', form.errors.expiresYear)}
-              </small>
             </S.InputGroup>
           </S.MiniInputGroup>
         </div>
@@ -228,8 +232,8 @@ const Address = ({ setToDeliveryAddress }: Props) => {
             value={form.values.name}
             onChange={form.handleChange}
             onBlur={form.handleBlur}
+            className={checkInputHasError('name') ? 'error' : ''}
           />
-          <small>{getErrorMessage('name', form.errors.name)}</small>
         </S.InputGroup>
         <S.InputGroup>
           <label htmlFor="address">Endereço</label>
@@ -240,8 +244,8 @@ const Address = ({ setToDeliveryAddress }: Props) => {
             value={form.values.address}
             onChange={form.handleChange}
             onBlur={form.handleBlur}
+            className={checkInputHasError('address') ? 'error' : ''}
           />
-          <small>{getErrorMessage('address', form.errors.address)}</small>
         </S.InputGroup>
         <S.InputGroup>
           <label htmlFor="city">Cidade</label>
@@ -252,8 +256,8 @@ const Address = ({ setToDeliveryAddress }: Props) => {
             value={form.values.city}
             onChange={form.handleChange}
             onBlur={form.handleBlur}
+            className={checkInputHasError('city') ? 'error' : ''}
           />
-          <small>{getErrorMessage('city', form.errors.city)}</small>
         </S.InputGroup>
         <S.MiniInputGroup>
           <S.InputGroup>
@@ -265,8 +269,8 @@ const Address = ({ setToDeliveryAddress }: Props) => {
               value={form.values.cep}
               onChange={form.handleChange}
               onBlur={form.handleBlur}
+              className={checkInputHasError('cep') ? 'error' : ''}
             />
-            <small>{getErrorMessage('cep', form.errors.cep)}</small>
           </S.InputGroup>
           <S.InputGroup>
             <label htmlFor="numberHouse">Número</label>
@@ -277,10 +281,8 @@ const Address = ({ setToDeliveryAddress }: Props) => {
               value={form.values.numberHouse}
               onChange={form.handleChange}
               onBlur={form.handleBlur}
+              className={checkInputHasError('numberHouse') ? 'error' : ''}
             />
-            <small>
-              {getErrorMessage('numberHouse', form.errors.numberHouse)}
-            </small>
           </S.InputGroup>
         </S.MiniInputGroup>
         <S.InputGroup>
@@ -299,7 +301,19 @@ const Address = ({ setToDeliveryAddress }: Props) => {
         <Button
           type="submit"
           title="Continuar com o pagamento"
-          onClick={() => setToPayment(true)}
+          onClick={() => {
+            if (!hasAddressErrors()) {
+              setToPayment(true)
+            } else {
+              form.setTouched({
+                name: true,
+                address: true,
+                city: true,
+                cep: true,
+                numberHouse: true
+              })
+            }
+          }}
         >
           Continuar com o pagamento
         </Button>

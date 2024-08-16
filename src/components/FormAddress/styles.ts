@@ -40,6 +40,10 @@ export const InputGroup = styled.div<InputGroupProps>`
   small {
     color: ${colors.beige};
   }
+
+  .error {
+    border: 3px solid ${colors.red};
+  }
 `
 
 export const MiniInputGroup = styled.div`

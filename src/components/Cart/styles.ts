@@ -88,3 +88,10 @@ export const CartItem = styled.li`
     cursor: pointer;
   }
 `
+
+export const VoidCart = styled.div`
+  h4,
+  p {
+    color: ${colors.beige};
+  }
+`

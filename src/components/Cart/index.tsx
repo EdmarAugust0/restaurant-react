@@ -35,7 +35,17 @@ const Cart = () => {
       <S.CartContainer className={isOpen ? 'isOpen' : ''}>
         <S.Overlay onClick={isClose} />
         <S.SideBar>
-          <Address setToDeliveryAddress={setToDeliveryAddress} />
+          {items.length > 0 ? (
+            <Address setToDeliveryAddress={setToDeliveryAddress} />
+          ) : (
+            <S.VoidCart>
+              <h4>Carrinho vazio!</h4>
+              <p className="margin-top">
+                Favor adicionar algum prato ao carrinho para continuarmos com a
+                compra.
+              </p>
+            </S.VoidCart>
+          )}
         </S.SideBar>
       </S.CartContainer>
     )
