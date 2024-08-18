@@ -30,7 +30,9 @@ const Header2 = () => {
           >
             Restaurantes
           </Link>
-          <img src={LogoHeader} alt="logo" />
+          <h1 className="line-height">
+            <img src={LogoHeader} alt="logo" />
+          </h1>
           <S.Hamburguer onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <span />
             <span />

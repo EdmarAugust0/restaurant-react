@@ -39,4 +39,7 @@ export const GlobalCss = createGlobalStyle`
     margin-top: 16px;
   }
 
+  .line-height {
+    line-height: 0;
+  }
 `

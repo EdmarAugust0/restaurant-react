@@ -1,6 +1,5 @@
 import { useState } from 'react'
 
-import { Cardapio } from '../../Pages/Home'
 import Button from '../Button'
 import Modal from '../Modal'
 

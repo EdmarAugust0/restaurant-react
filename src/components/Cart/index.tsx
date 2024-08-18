@@ -35,17 +35,7 @@ const Cart = () => {
       <S.CartContainer className={isOpen ? 'isOpen' : ''}>
         <S.Overlay onClick={isClose} />
         <S.SideBar>
-          {items.length > 0 ? (
-            <Address setToDeliveryAddress={setToDeliveryAddress} />
-          ) : (
-            <S.VoidCart>
-              <h4>Carrinho vazio!</h4>
-              <p className="margin-top">
-                Favor adicionar algum prato ao carrinho para continuarmos com a
-                compra.
-              </p>
-            </S.VoidCart>
-          )}
+          <Address setToDeliveryAddress={setToDeliveryAddress} />
         </S.SideBar>
       </S.CartContainer>
     )
@@ -55,31 +45,41 @@ const Cart = () => {
       <S.CartContainer className={isOpen ? 'isOpen' : ''}>
         <S.Overlay onClick={isClose} />
         <S.SideBar>
-          <>
-            <ul>
-              {items.map((item) => (
-                <S.CartItem key={item.id}>
-                  <img src={item.foto} alt={item.nome} />
-                  <div>
-                    <h3>{item.nome}</h3>
-                    <p>{convertToBRL(item.preco)}</p>
-                  </div>
-                  <button type="button" onClick={() => removeItem(item.id)} />
-                </S.CartItem>
-              ))}
-            </ul>
-            <S.Total>
-              <p>Valor total:</p>
-              <p>{convertToBRL(getTotalPrice())}</p>
-            </S.Total>
-            <Button
-              type="button"
-              title="Clique para continuar com a compra"
-              onClick={() => setToDeliveryAddress(true)}
-            >
-              Continuar com a entrega
-            </Button>
-          </>
+          {items.length > 0 ? (
+            <>
+              <ul>
+                {items.map((item) => (
+                  <S.CartItem key={item.id}>
+                    <img src={item.foto} alt={item.nome} />
+                    <div>
+                      <h3>{item.nome}</h3>
+                      <p>{convertToBRL(item.preco)}</p>
+                    </div>
+                    <button type="button" onClick={() => removeItem(item.id)} />
+                  </S.CartItem>
+                ))}
+              </ul>
+              <S.Total>
+                <p>Valor total:</p>
+                <p>{convertToBRL(getTotalPrice())}</p>
+              </S.Total>
+              <Button
+                type="button"
+                title="Clique para continuar com a compra"
+                onClick={() => setToDeliveryAddress(true)}
+              >
+                Continuar com a entrega
+              </Button>
+            </>
+          ) : (
+            <S.VoidCart>
+              <h4>Carrinho vazio!</h4>
+              <p className="margin-top">
+                Favor adicionar algum prato ao carrinho para continuarmos com a
+                compra.
+              </p>
+            </S.VoidCart>
+          )}
         </S.SideBar>
       </S.CartContainer>
     )

@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux'
 
-import { Cardapio } from '../../Pages/Home'
 import Button from '../Button'
 
 import close from '../../assets/image/close 1.svg'

@@ -1,10 +1,14 @@
 import { useState } from 'react'
 import { useFormik } from 'formik'
+import InputMask from 'react-input-mask'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
 
 import Button from '../Button'
 import * as Yup from 'yup'
 
 import { usePurchaseMutation } from '../../services/api'
+import { close, clear } from '../../store/reducers/cart'
 
 import * as S from './styles'
 
@@ -14,7 +18,14 @@ type Props = {
 
 const Address = ({ setToDeliveryAddress }: Props) => {
   const [toPayment, setToPayment] = useState(false)
-  const [purchase, { data, isSuccess }] = usePurchaseMutation()
+  const [purchase, { data, isSuccess, isLoading }] = usePurchaseMutation()
+  const { items } = useSelector((state: RootReducer) => state.cart)
+  const dispatch = useDispatch()
+
+  const Finish = () => {
+    dispatch(close())
+    dispatch(clear())
+  }
 
   const form = useFormik({
     initialValues: {
@@ -50,8 +61,6 @@ const Address = ({ setToDeliveryAddress }: Props) => {
       expiresYear: Yup.string().required('Campo obrigatório')
     }),
     onSubmit: (values) => {
-      console.log('aaa')
-
       purchase({
         delivery: {
           receiver: values.name,
@@ -74,12 +83,10 @@ const Address = ({ setToDeliveryAddress }: Props) => {
             }
           }
         },
-        products: [
-          {
-            id: 1,
-            price: 10
-          }
-        ]
+        products: items.map((item) => ({
+          id: item.id,
+          price: item.preco
+        }))
       })
     }
   })
@@ -102,7 +109,7 @@ const Address = ({ setToDeliveryAddress }: Props) => {
     )
   }
 
-  if (isSuccess) {
+  if (isSuccess && data) {
     return (
       <S.Feedback>
         <h1>Pedido realizado - {data.orderId}</h1>
@@ -123,7 +130,11 @@ const Address = ({ setToDeliveryAddress }: Props) => {
           gastronômica. Bom apetite!
         </p>
 
-        <Button type="button" title="Concluir o pedido">
+        <Button
+          type="button"
+          title="Concluir o pedido"
+          onClick={() => Finish()}
+        >
           Concluir
         </Button>
       </S.Feedback>
@@ -150,7 +161,7 @@ const Address = ({ setToDeliveryAddress }: Props) => {
           <S.MiniInputGroup>
             <S.InputGroup>
               <label htmlFor="numberCard">Número do cartão</label>
-              <input
+              <InputMask
                 type="text"
                 id="numberCard"
                 name="numberCard"
@@ -158,11 +169,12 @@ const Address = ({ setToDeliveryAddress }: Props) => {
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
                 className={checkInputHasError('numberCard') ? 'error' : ''}
+                mask={'9999 9999 9999 9999'}
               />
             </S.InputGroup>
             <S.InputGroup maxWidth="88px">
               <label htmlFor="cvv">CVV</label>
-              <input
+              <InputMask
                 type="text"
                 id="cvv"
                 name="cvv"
@@ -170,13 +182,14 @@ const Address = ({ setToDeliveryAddress }: Props) => {
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
                 className={checkInputHasError('cvv') ? 'error' : ''}
+                mask={'999'}
               />
             </S.InputGroup>
           </S.MiniInputGroup>
           <S.MiniInputGroup>
             <S.InputGroup>
               <label htmlFor="expiresMonth">Mês de vencimento</label>
-              <input
+              <InputMask
                 type="text"
                 id="expiresMonth"
                 name="expiresMonth"
@@ -184,11 +197,12 @@ const Address = ({ setToDeliveryAddress }: Props) => {
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
                 className={checkInputHasError('expiresMonth') ? 'error' : ''}
+                mask={'99'}
               />
             </S.InputGroup>
             <S.InputGroup>
               <label htmlFor="expiresYear">Ano de vencimento</label>
-              <input
+              <InputMask
                 type="text"
                 id="expiresYear"
                 name="expiresYear"
@@ -196,6 +210,7 @@ const Address = ({ setToDeliveryAddress }: Props) => {
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
                 className={checkInputHasError('expiresYear') ? 'error' : ''}
+                mask={'99'}
               />
             </S.InputGroup>
           </S.MiniInputGroup>
@@ -205,8 +220,9 @@ const Address = ({ setToDeliveryAddress }: Props) => {
             type="submit"
             title="Finalizar pagamento"
             onClick={form.handleSubmit}
+            disabled={isLoading}
           >
-            Finalizar pagamento
+            {isLoading ? 'Finalizando pagamento...' : 'Finalizar pagamento'}
           </Button>
           <Button
             type="button"
@@ -262,7 +278,7 @@ const Address = ({ setToDeliveryAddress }: Props) => {
         <S.MiniInputGroup>
           <S.InputGroup>
             <label htmlFor="cep">CEP</label>
-            <input
+            <InputMask
               type="text"
               id="cep"
               name="cep"
@@ -270,12 +286,13 @@ const Address = ({ setToDeliveryAddress }: Props) => {
               onChange={form.handleChange}
               onBlur={form.handleBlur}
               className={checkInputHasError('cep') ? 'error' : ''}
+              mask={'99999-999'}
             />
           </S.InputGroup>
           <S.InputGroup>
             <label htmlFor="numberHouse">Número</label>
             <input
-              type="text"
+              type="number"
               id="numberHouse"
               name="numberHouse"
               value={form.values.numberHouse}

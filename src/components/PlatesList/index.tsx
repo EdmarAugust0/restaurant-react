@@ -1,5 +1,3 @@
-import { RestaurantModel } from '../../Pages/Home'
-
 import Plate from '../Plate'
 
 import * as S from './styles'

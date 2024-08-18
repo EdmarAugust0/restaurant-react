@@ -7,7 +7,9 @@ const Header = () => (
   <S.HeaderStyle>
     <S.ImgFundo style={{ backgroundImage: `url(${header})` }}>
       <div className="container">
-        <img src={logoHeader} alt="logo" />
+        <h1 className="line-height">
+          <img src={logoHeader} alt="logo" />
+        </h1>
         <S.TitleHeader>
           Viva experiências gastronômicas no conforto da sua casa
         </S.TitleHeader>
