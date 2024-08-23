@@ -99,16 +99,6 @@ const Address = ({ setToDeliveryAddress }: Props) => {
     return hasError
   }
 
-  const hasAddressErrors = () => {
-    return (
-      !!form.errors.name ||
-      !!form.errors.address ||
-      !!form.errors.city ||
-      !!form.errors.cep ||
-      !!form.errors.numberHouse
-    )
-  }
-
   if (isSuccess && data) {
     return (
       <S.Feedback>
@@ -319,17 +309,19 @@ const Address = ({ setToDeliveryAddress }: Props) => {
           type="submit"
           title="Continuar com o pagamento"
           onClick={() => {
-            if (!hasAddressErrors()) {
-              setToPayment(true)
-            } else {
-              form.setTouched({
-                name: true,
-                address: true,
-                city: true,
-                cep: true,
-                numberHouse: true
-              })
-            }
+            form.validateForm().then((errors) => {
+              if (Object.keys(errors).length === 0) {
+                setToPayment(true)
+              } else {
+                form.setTouched({
+                  name: true,
+                  address: true,
+                  city: true,
+                  cep: true,
+                  numberHouse: true
+                })
+              }
+            })
           }}
         >
           Continuar com o pagamento

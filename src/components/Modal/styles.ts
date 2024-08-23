@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { breakpoints, colors } from '../../styles'
+import { colors } from '../../styles'
 import { ButtonModal } from '../Button/styles'
 
 export const ModalUniversal = styled.div`
